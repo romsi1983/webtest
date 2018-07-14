@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" parallel="none">
+
+	<test name="AddComputer">
+		<parameter name="company" value="RCA" />
+		<classes>
+			<class name="Tests.AddComputer" />
+		</classes>
+	</test> <!-- Search -->
+
+	<test name="Search">
+		<parameter name="mySearch" value="ACE" />
+		<classes>
+			<class name="Tests.Search" />
+		</classes>
+	</test> <!-- Search -->
+
+</suite> <!-- Suite -->
