@@ -8,10 +8,10 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 public class Base {
     private WebDriver driver;
-
     private HomePage homePage;
     private ResultsPage resultsPage;
     private EditPage editPage;
+    private Computer comp;
 
     public Base(){
         ChromeOptions chromeOptions = new ChromeOptions();
@@ -20,6 +20,7 @@ public class Base {
         homePage = new HomePage(driver);
         resultsPage = new ResultsPage(driver);
         editPage = new EditPage(driver);
+        comp = new Computer();
     }
 
     public void quit() {driver.quit();}
@@ -37,9 +38,17 @@ public class Base {
         String alert = homePage.getAllertMessage();
         if (!(alert.contentEquals("Done! Computer " + computer.getComputerName() + " has been created"))) return false;
         System.out.println("comp was created");
-
-
         return true;
+    }
+
+    public void saveComputer(Computer computer)
+    {
+        comp = computer;
+    }
+
+    public Computer getComputer ()
+    {
+        return comp;
     }
 
 

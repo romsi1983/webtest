@@ -13,17 +13,8 @@ public class EditPage extends BasePage {
     private String errorLocator = "//div[@class='clearfix error']";
     private String errorColour = "rgb(200, 120, 114)";
 
-
-//    public AddNewComputerPage() throws Exception {
-//        String currentURL = getURL();
-//        //String found = getValue(resultLinkLocator);
-//        if (currentURL.indexOf("new") == -1)
-//            throw new Exception("this is not the Add a computer");
-//    }
-
     public EditPage(WebDriver driver) {
         super (driver);
-        //PageFactory.initElements(driver, this);
     }
 
     public void enterCompName(String compName) {

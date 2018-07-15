@@ -12,7 +12,6 @@ public class HomePage extends BasePage {
     private String siteUrl = "http://computer-database.herokuapp.com/computers";
     private String alertLocator = "//div[@class='alert-message warning']";
 
-    //public HomePage(WebDriver driver) throws Exception
     public HomePage(WebDriver driver) {
         super (driver);
         PageFactory.initElements(driver, this);
@@ -22,22 +21,6 @@ public class HomePage extends BasePage {
     {
         openUrl(siteUrl);
     }
-//    public HomePage() throws Exception {
-//
-//        //openBrowser();
-//        openUrl(siteUrl);
-//
-//        if (!(getPageTitle().equalsIgnoreCase("Computers database")))
-//            throw new Exception("this is not the home page");
-//
-//    }
-
-//    public ResultsPage search(String keyword) throws Exception {
-//
-//        typeText(searchFieldLocator, keyword);
-//        clickElement(searchButtonLocator);
-//        return new ResultsPage();
-//    }
 
     public void search(String keyword)
     {
@@ -55,8 +38,6 @@ public class HomePage extends BasePage {
     {
         clickElement(addCompLocator);
     }
-//    public AddNewComputerPage newComp() throws Exception {
-//        clickElement(addCompLocator);
-//        return new AddNewComputerPage();}
+
 
 }

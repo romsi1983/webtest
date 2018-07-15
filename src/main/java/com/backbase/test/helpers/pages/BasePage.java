@@ -98,6 +98,8 @@ public class BasePage {
         return driver.getCurrentUrl();
     }
 
+
+    //ToDo: Redesign code: avoid exception handler
     public boolean isOnPage(String locator)
     {
         try{find(locator);}
