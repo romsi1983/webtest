@@ -8,7 +8,7 @@ public class DataProviders {
         return new Object[][]{
                 {Computer.newEntity()
                         .withCompany("RCA")
-                        .withCompany("NewCompany" + System.currentTimeMillis())
+                        .withComputerName("NewComputer" + System.currentTimeMillis())
                         .withIntroduced("2017-01-01")
                         .withDiscontinued("2018-01-01")
                         .build()},
