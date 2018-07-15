@@ -5,14 +5,13 @@ import com.backbase.test.helpers.pages.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.testng.Assert;
 
 public class Base {
     private WebDriver driver;
 
     private HomePage homePage;
     private ResultsPage resultsPage;
-    private AddNewComputerPage newComp;
+    private EditPage editPage;
 
     public Base(){
         ChromeOptions chromeOptions = new ChromeOptions();
@@ -20,20 +19,27 @@ public class Base {
         driver = new ChromeDriver(chromeOptions);
         homePage = new HomePage(driver);
         resultsPage = new ResultsPage(driver);
-        newComp = new AddNewComputerPage(driver);
+        editPage = new EditPage(driver);
     }
 
     public void quit() {driver.quit();}
 
-    public void createNewComp(Computer computer)
+    public boolean createNewComp(Computer computer)
     {
         homePage.open();
         homePage.addNewComputer();
-        newComp.ChooseCompany(computer.getCompany());
-        newComp.EnterCompName(computer.getComputerName());
-        newComp.EnterIntroducedDate(computer.getIntroduced());
-        newComp.EnterDiscontinuedDate(computer.getDiscontinued());
-        newComp.CreateNewComputer();
+        if (!(editPage.isNew())) return false;
+        editPage.chooseCompany(computer.getCompany());
+        editPage.enterCompName(computer.getComputerName());
+        editPage.enterIntroducedDate(computer.getIntroduced());
+        editPage.enterDiscontinuedDate(computer.getDiscontinued());
+        if (!(editPage.submit())) return false ;
+        String alert = homePage.getAllertMessage();
+        if (!(alert.contentEquals("Done! Computer " + computer.getComputerName() + " has been created"))) return false;
+        System.out.println("comp was created");
+
+
+        return true;
     }
 
 

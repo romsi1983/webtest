@@ -10,6 +10,7 @@ public class HomePage extends BasePage {
     private String searchButtonLocator = "//input[@id='searchsubmit']";
     private String addCompLocator = "//a[@id='add']";
     private String siteUrl = "http://computer-database.herokuapp.com/computers";
+    private String alertLocator = "//div[@class='alert-message warning']";
 
     //public HomePage(WebDriver driver) throws Exception
     public HomePage(WebDriver driver) {
@@ -42,6 +43,12 @@ public class HomePage extends BasePage {
     {
         typeText(searchFieldLocator, keyword);
         clickElement(searchButtonLocator);
+    }
+
+    public String getAllertMessage()
+    {
+        if (!(isOnPage(alertLocator)))return "";
+        return getValue(alertLocator);
     }
 
     public void addNewComputer()

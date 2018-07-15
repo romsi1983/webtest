@@ -26,10 +26,10 @@ public class Computer {
 
     public class Builder {
         private Builder() {}
-        public Builder withComputerName(String firstname) { Computer.this.computerName = computerName; return this; }
-        public Builder withIntroduced(String lastname) { Computer.this.introduced = introduced; return this; }
-        public Builder withDiscontinued(String address) { Computer.this.discontinued = discontinued; return this; }
-        public Builder withCompany(String postcode) { Computer.this.company = company; return this; }
+        public Builder withComputerName(String computerName) { Computer.this.computerName = computerName; return this; }
+        public Builder withIntroduced(String introduced) { Computer.this.introduced = introduced; return this; }
+        public Builder withDiscontinued(String discontinued) { Computer.this.discontinued = discontinued; return this; }
+        public Builder withCompany(String company) { Computer.this.company = company; return this; }
 
         public Computer build() {return Computer.this; }
     }

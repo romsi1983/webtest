@@ -90,13 +90,19 @@ public class BasePage {
         return find(locator).getCssValue(keyword);
     }
 
-
     public Boolean isDisplayed(String locator) {
         return find(locator).isDisplayed();
     }
 
     public String getURL() {
         return driver.getCurrentUrl();
+    }
+
+    public boolean isOnPage(String locator)
+    {
+        try{find(locator);}
+        catch (Throwable ex) {return false;}
+        return true;
     }
 
 }
