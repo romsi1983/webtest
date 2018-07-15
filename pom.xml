@@ -39,7 +39,7 @@
 						<manifest>
 							<!-- Jar file entry point -->
 							<addClasspath>true</addClasspath>
-							<mainClass>com.App</mainClass>
+							<mainClass>com.backbase.test.app.Application</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
