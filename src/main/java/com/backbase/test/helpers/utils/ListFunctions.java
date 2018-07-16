@@ -9,9 +9,17 @@ public class ListFunctions {
     {
         int found = 0;
         for (Computer temp : compList) {
-            if (temp == comp) found ++;
+            if (!(compareValues(temp.getComputerName(),comp.getComputerName()))) break;
+            if (!(compareValues(temp.getCompany(),comp.getCompany()))) break;
+            if (!(compareValues(temp.getIntroduced(),comp.getIntroduced()))) break;
+            if (!(compareValues(temp.getDiscontinued(),comp.getDiscontinued()))) break;
+            found++;
         }
         return found;
     }
-
+    private boolean compareValues(String value1,String value2){
+        if ((value1==null)&&(value2==null)) return true;
+        if ((value1==null)||(value2==null)) return false;
+        return value1.contentEquals(value2);
+    }
 }
