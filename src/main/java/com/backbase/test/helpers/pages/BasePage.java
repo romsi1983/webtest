@@ -104,26 +104,27 @@ public class BasePage {
 
 
     //ToDo: Redesign code: avoid exception handler
-    public boolean isOnPage(String locator)
-    {
-        try{find(locator);}
-        catch (Throwable ex) {return false;}
+    public boolean isOnPage(String locator) {
+        try {
+            find(locator);
+        } catch (Throwable ex) {
+            return false;
+        }
         return true;
     }
 
-    public List<List<String>> tableData(String locator)
-    {
+    public List<List<String>> tableData(String locator) {
         //List<String> tableData = new ArrayList<>();
         WebElement table = find(locator);
         List<WebElement> tableRows = table.findElements(By.xpath("tr"));
         //List<WebElement> tableCells= table.findElements(By.xpath("tr/td"));
         List<List<WebElement>> cells = new ArrayList<>();
-        for(WebElement row : tableRows) {
+        for (WebElement row : tableRows) {
             //List<WebElement> cells = row.findElements(By.xpath("td"));
             cells.add(row.findElements(By.xpath("td")));
         }
         List<List<String>> tableData = new ArrayList<>();
-        for(List<WebElement> row : cells) {
+        for (List<WebElement> row : cells) {
             List<String> tempRow = new ArrayList<>();
             for (WebElement col : row) {
                 tempRow.add(col.getText());
@@ -133,7 +134,20 @@ public class BasePage {
         return tableData;
     }
 
-
+    public boolean clickHrefByInnerText(String locator, String text) {
+        WebElement table = find(locator);
+        List<WebElement> tableRows = table.findElements(By.xpath("tr"));
+        for (WebElement row : tableRows) {
+            if (row.getAttribute("innerText").contentEquals(text)) {
+                WebElement hRef = row.findElement(By.xpath("td/a"));
+                hRef.click();
+                return true;
+            }
+        }
+        return false;
+    }
 }
+
+
 
 

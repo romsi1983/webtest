@@ -90,5 +90,31 @@ public class HomePage extends BasePage {
         clickElement(addCompLocator);
     }
 
+    public void selectComputer(Computer comp)
+    {
+        String text = "";
+        try{ text = comp.getComputerName()+"\t"+convertDate(comp.getIntroduced())+"\t"+convertDate(comp.getDiscontinued())+"\t"+convertNull(comp.getCompany());}
+        catch (Throwable t){}
+
+        clickHrefByInnerText(computerTableLocator, text);
+    }
+
+    private String convertNull(String value)
+    {
+        if (value==null) return "-";
+        return value;
+    }
+
+    private String convertDate(String entry) throws ParseException
+    {
+        if (entry==null) return "-";
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd",Locale.ENGLISH);
+        //SimpleDateFormat sdf = new SimpleDateFormat("d MMM yyyy",Locale.ENGLISH);
+        Date date = sdf.parse(entry);
+        //sdf.applyPattern( "yyyy-MM-dd" );
+        sdf.applyPattern("d MMM yyyy");
+        return sdf.format(date);
+    }
+
 
 }

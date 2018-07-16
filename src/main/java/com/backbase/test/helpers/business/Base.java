@@ -54,14 +54,9 @@ public class Base {
         return search;
     }
 
-    public void saveComputer(Computer computer)
+    public void selectComputer(Computer computer)
     {
-        comp = computer;
-    }
-
-    public Computer getComputer ()
-    {
-        return comp;
+        homePage.selectComputer(computer);
     }
 
 

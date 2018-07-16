@@ -16,11 +16,11 @@
 		</classes>
 	</test> <!-- Search -->
 
-	<!--<test name="Search">-->
-		<!--<parameter name="mySearch" value="ACE" />-->
-		<!--<classes>-->
-			<!--<class name="com.backbase.test.tests.Search" />-->
-		<!--</classes>-->
-	<!--</test> &lt;!&ndash; Search &ndash;&gt;-->
+	<test name="Search">
+		<parameter name="expectedSearchResult" value="1" />
+		<classes>
+			<class name="com.backbase.test.tests.Search" />
+		</classes>
+	</test> <!-- Search -->
 
 </suite> <!-- Suite -->
