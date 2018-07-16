@@ -7,7 +7,9 @@ public class CreateSameComputer extends TestBase{
     @Test()
 
     public void CanCreateSameComp(){
-        Computer computer = base.getComputer();
-        Assert.assertFalse(base.createNewComp(computer));
+        Computer computer = td.getComputer();
+        td.saveComputer(computer);
+//        Computer computer = base.getComputer();
+//        Assert.assertFalse(base.createNewComp(computer));
     }
 }

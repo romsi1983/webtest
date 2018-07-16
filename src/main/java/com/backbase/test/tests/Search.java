@@ -9,10 +9,11 @@ import java.util.List;
 public class Search extends TestBase{
     @Test()
     public void CanDoSearch(){
-        List<Computer>  foundComps = base.search("Acer");
-        if (foundComps.size()==0)
-        {
-            Assert.fail("nothing was found");
-        }
+        Computer computer = td.getComputer();
+//        List<Computer>  foundComps = base.search("Acer");
+//        if (foundComps.size()==0)
+//        {
+//            Assert.fail("nothing was found");
+//        }
     }
 }
