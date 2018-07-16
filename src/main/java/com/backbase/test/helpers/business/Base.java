@@ -38,7 +38,7 @@ public class Base {
         editPage.enterIntroducedDate(computer.getIntroduced());
         editPage.enterDiscontinuedDate(computer.getDiscontinued());
         if (!(editPage.submit())) return false ;
-        String alert = homePage.getAllertMessage();
+        String alert = homePage.getAlertMessage();
         if (!(alert.contentEquals("Done! Computer " + computer.getComputerName() + " has been created"))) return false;
         System.out.println("comp was created");
         return true;

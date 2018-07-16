@@ -7,6 +7,10 @@ import com.backbase.test.helpers.utils.TextFunctions;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
+import java.util.Locale;
 
 public class HomePage extends BasePage {
 
@@ -47,13 +51,15 @@ public class HomePage extends BasePage {
         for (List <String> entry: tableDataValues) {
             Computer comp = new Computer();
 //            getCompList.add(comp););
-            comp = comp.newEntity()
-                    .withComputerName(checkIfNull(entry.get(0)))
-                    .withIntroduced(checkIfNull(entry.get(1)))
-                    .withDiscontinued(checkIfNull(entry.get(2)))
-                    .withCompany(checkIfNull(entry.get(3)))
-                    .build();
-            getCompList.add(comp);
+            try{
+                comp = comp.newEntity()
+                        .withComputerName(checkIfNull(entry.get(0)))
+                        .withIntroduced(checkDate(entry.get(1)))
+                        .withDiscontinued(checkDate(entry.get(2)))
+                        .withCompany(checkIfNull(entry.get(3)))
+                        .build();
+                getCompList.add(comp);}
+            catch (Throwable t){}
         }
         return getCompList;
     }
@@ -63,7 +69,17 @@ public class HomePage extends BasePage {
         if (entry.contentEquals("-")) return null;
         return entry;
     }
-    public String getAllertMessage()
+
+    private String checkDate(String entry) throws ParseException
+    {
+        if (entry.contentEquals("-")) return null;
+        SimpleDateFormat sdf = new SimpleDateFormat("d MMM yyyy",Locale.ENGLISH);
+        Date date = sdf.parse(entry);
+        sdf.applyPattern( "yyyy-MM-dd" );
+        return sdf.format(date);
+    }
+
+    public String getAlertMessage()
     {
         if (!(isOnPage(alertLocator)))return "";
         return getValue(alertLocator);

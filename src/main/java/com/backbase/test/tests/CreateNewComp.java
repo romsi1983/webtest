@@ -9,8 +9,7 @@ public class CreateNewComp extends TestBase
     @Test(dataProvider = "validComputer",dataProviderClass = DataProviders.class)
     //@Parameters({"company"},{"name"},{""})
     public void canCreateComp(Computer computer) {
+        Assert.assertTrue(base.createNewComp(computer));
         td.saveComputer(computer);
-        // Assert.assertTrue(base.createNewComp(computer));
-        // base.saveComputer(computer);
     }
 }
