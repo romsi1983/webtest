@@ -28,20 +28,27 @@ public class Base {
 
     public void quit() {driver.quit();}
 
-    public boolean createNewComp(Computer computer)
+    public List<String> createNewComp(Computer computer)
     {
+        List<String> errors;
         homePage.open();
         homePage.addNewComputer();
-        if (!(editPage.isNew())) return false;
-        editPage.chooseCompany(computer.getCompany());
-        editPage.enterCompName(computer.getComputerName());
-        editPage.enterIntroducedDate(computer.getIntroduced());
-        editPage.enterDiscontinuedDate(computer.getDiscontinued());
-        if (!(editPage.submit())) return false ;
+        errors = editComputerSettings(computer);
+        if (errors.size()>0) return errors;
         String alert = homePage.getAlertMessage();
-        if (!(alert.contentEquals("Done! Computer " + computer.getComputerName() + " has been created"))) return false;
+        if (!(alert.contentEquals("Done! Computer " + computer.getComputerName() + " has been created"))) errors.add("alert");
         //System.out.println("computer was created");
-        return true;
+        return errors;
+    }
+
+    public List<String> editComp(Computer computer)
+    {
+        List<String> errors;
+        errors = editComputerSettings(computer);
+        if (errors.size()>0) return errors;
+        String alert = homePage.getAlertMessage();
+        if (!(alert.contentEquals("Done! Computer " + computer.getComputerName() + " has been updated"))) errors.add("alert");
+        return errors;
     }
 
     public List<Computer> search (String keyword) {
@@ -61,8 +68,22 @@ public class Base {
         homePage.selectComputer(computer);
         editPage.delete();
         String alert = homePage.getAlertMessage();
-        if (!(alert.contentEquals("Done! Computer has been deleted"))) return false;
-        return true;
+        return (alert.contentEquals("Done! Computer has been deleted"));
+    }
+
+    private List<String> editComputerSettings(Computer computer)
+    {
+        List<String> errors = new ArrayList<>();
+        editPage.chooseCompany(computer.getCompany());
+        editPage.enterCompName(computer.getComputerName());
+        editPage.enterIntroducedDate(computer.getIntroduced());
+        editPage.enterDiscontinuedDate(computer.getDiscontinued());
+        editPage.submit();
+        if (homePage.isHomePage()) return errors;
+        if (editPage.isNameWithError()) errors.add("computerName");
+        if (editPage.isDiscontinedDateWithError()) errors.add("Discontinued");
+        if (editPage.isIntroducedDateWithError()) errors.add("Introduced");
+        return errors;
     }
 
 

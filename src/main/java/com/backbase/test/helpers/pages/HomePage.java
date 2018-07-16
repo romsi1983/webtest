@@ -33,6 +33,11 @@ public class HomePage extends BasePage {
         openUrl(siteUrl);
     }
 
+    public boolean isHomePage()
+    {
+        return getURL().contentEquals(siteUrl);
+    }
+
     public Integer search(String keyword)
     {
         typeText(searchFieldLocator, keyword);
@@ -59,7 +64,7 @@ public class HomePage extends BasePage {
                         .withCompany(checkIfNull(entry.get(3)))
                         .build();
                 getCompList.add(comp);}
-            catch (Throwable t){}
+            catch (Throwable t){break;}
         }
         return getCompList;
     }

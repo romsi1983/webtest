@@ -72,7 +72,10 @@ public class BasePage {
 
 
     public void typeText(String locator, String keyword) {
-        find(locator).sendKeys(keyword);
+        WebElement textField = find(locator);
+        textField.clear();
+        textField.sendKeys(keyword);
+        //find(locator).sendKeys(keyword);
     }
 
 

@@ -14,6 +14,8 @@ public class Search extends TestBase{
     @Test()
     public void CanDoSearch(@Optional("1") int expectedSearchResult){
         //Computer comp = td.getComputer();
+
+        //new comps for debugging
         Computer comp = new Computer();
         comp = comp.newEntity()
                 .withComputerName("1234LINK")
@@ -21,12 +23,23 @@ public class Search extends TestBase{
                 .withDiscontinued("2018-07-18")
                 .withCompany("Acorn computer")
                 .build();
+
+        Computer editComp = new Computer();
+        editComp = editComp.newEntity()
+                .withComputerName("1234LINK4321")
+                .withIntroduced(("2005-10-20"))
+                .withDiscontinued("2018-07-18")
+                .withCompany("Acorn computer")
+                .build();
+
         List<Computer>  foundComps = base.search(comp.getComputerName());
 
         //if ((foundComps.size()==0)&&(expectedSearchResult!=0)) {  Assert.fail("nothing was found"); }
 
         ListFunctions lf = new ListFunctions();
         int assurance = lf.findCompsInList(foundComps,comp);
-        base.deleteComputer(comp);
+        base.selectComputer(comp);
+        List<String> errors = base.editComp(editComp);
+
     }
 }

@@ -34,9 +34,9 @@ public class EditPage extends BasePage {
         selectValue(computerCompanyLocator, companyName);
     }
 
-    public boolean submit() {
+    public void submit() {
         clickElement(computerSubmitLocator);
-        return !isOnPage(errorLocator);
+        //return !isOnPage(errorLocator);
     }
 
     public void delete() {
