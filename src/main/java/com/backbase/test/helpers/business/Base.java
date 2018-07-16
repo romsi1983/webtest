@@ -40,7 +40,7 @@ public class Base {
         if (!(editPage.submit())) return false ;
         String alert = homePage.getAlertMessage();
         if (!(alert.contentEquals("Done! Computer " + computer.getComputerName() + " has been created"))) return false;
-        System.out.println("comp was created");
+        //System.out.println("computer was created");
         return true;
     }
 
@@ -54,9 +54,15 @@ public class Base {
         return search;
     }
 
-    public void selectComputer(Computer computer)
+    public void selectComputer(Computer computer)  { homePage.selectComputer(computer); }
+
+    public boolean deleteComputer(Computer computer)
     {
         homePage.selectComputer(computer);
+        editPage.delete();
+        String alert = homePage.getAlertMessage();
+        if (!(alert.contentEquals("Done! Computer has been deleted"))) return false;
+        return true;
     }
 
 

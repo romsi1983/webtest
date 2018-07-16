@@ -27,6 +27,6 @@ public class Search extends TestBase{
 
         ListFunctions lf = new ListFunctions();
         int assurance = lf.findCompsInList(foundComps,comp);
-        base.selectComputer(comp);
+        base.deleteComputer(comp);
     }
 }
