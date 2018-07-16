@@ -6,6 +6,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Base {
     private WebDriver driver;
     private HomePage homePage;
@@ -39,6 +42,14 @@ public class Base {
         if (!(alert.contentEquals("Done! Computer " + computer.getComputerName() + " has been created"))) return false;
         System.out.println("comp was created");
         return true;
+    }
+
+    public List<Computer> search (String keyword) {
+        List<Computer> search = new ArrayList<>();
+        int foundComps = homePage.search(keyword);
+        if (foundComps == 0) return search;
+        search = homePage.getCompList();
+        return search;
     }
 
     public void saveComputer(Computer computer)

@@ -38,6 +38,5 @@ public class TextFunctions {
         }
 
         return orig.substring(leftIndex, rightIndex);
-
     }
 }
