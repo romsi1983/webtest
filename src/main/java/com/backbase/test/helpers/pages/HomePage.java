@@ -1,6 +1,7 @@
 package com.backbase.test.helpers.pages;
 import com.backbase.test.helpers.model.Computer;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import com.backbase.test.helpers.utils.TextFunctions;
 
@@ -15,6 +16,8 @@ public class HomePage extends BasePage {
     private String siteUrl = "http://computer-database.herokuapp.com/computers";
     private String alertLocator = "//div[@class='alert-message warning']";
     private String foundLocator = "//section/h1";
+    private String computerTableLocator = "//table/tbody";
+
 
     public HomePage(WebDriver driver) {
         super (driver);
@@ -40,9 +43,26 @@ public class HomePage extends BasePage {
 
     public List<Computer> getCompList () {
         List<Computer> getCompList = new ArrayList<>();
+        List<List<String>> tableDataValues = tableData(computerTableLocator);
+        for (List <String> entry: tableDataValues) {
+            Computer comp = new Computer();
+//            getCompList.add(comp););
+            comp = comp.newEntity()
+                    .withComputerName(checkIfNull(entry.get(0)))
+                    .withIntroduced(checkIfNull(entry.get(1)))
+                    .withDiscontinued(checkIfNull(entry.get(2)))
+                    .withCompany(checkIfNull(entry.get(3)))
+                    .build();
+            getCompList.add(comp);
+        }
         return getCompList;
     }
 
+    private String checkIfNull(String entry)
+    {
+        if (entry.contentEquals("-")) return null;
+        return entry;
+    }
     public String getAllertMessage()
     {
         if (!(isOnPage(alertLocator)))return "";

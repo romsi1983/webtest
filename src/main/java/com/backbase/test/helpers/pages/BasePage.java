@@ -9,6 +9,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 //import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
+
 public class BasePage {
 
 //    protected static WebDriverWait wait;
@@ -106,6 +110,29 @@ public class BasePage {
         catch (Throwable ex) {return false;}
         return true;
     }
+
+    public List<List<String>> tableData(String locator)
+    {
+        //List<String> tableData = new ArrayList<>();
+        WebElement table = find(locator);
+        List<WebElement> tableRows = table.findElements(By.xpath("tr"));
+        //List<WebElement> tableCells= table.findElements(By.xpath("tr/td"));
+        List<List<WebElement>> cells = new ArrayList<>();
+        for(WebElement row : tableRows) {
+            //List<WebElement> cells = row.findElements(By.xpath("td"));
+            cells.add(row.findElements(By.xpath("td")));
+        }
+        List<List<String>> tableData = new ArrayList<>();
+        for(List<WebElement> row : cells) {
+            List<String> tempRow = new ArrayList<>();
+            for (WebElement col : row) {
+                tempRow.add(col.getText());
+            }
+            tableData.add(tempRow);
+        }
+        return tableData;
+    }
+
 
 }
 

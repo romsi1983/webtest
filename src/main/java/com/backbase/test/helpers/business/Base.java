@@ -46,8 +46,10 @@ public class Base {
 
     public List<Computer> search (String keyword) {
         List<Computer> search = new ArrayList<>();
+        homePage.open();
         int foundComps = homePage.search(keyword);
         if (foundComps == 0) return search;
+        // ToDO: if number of found documents is > then shown on page -> implement collecting data from all pages
         search = homePage.getCompList();
         return search;
     }
