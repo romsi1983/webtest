@@ -95,13 +95,13 @@ public class HomePage extends BasePage {
         clickElement(addCompLocator);
     }
 
-    public void selectComputer(Computer comp)
+    public boolean selectComputer(Computer comp)
     {
         String text = "";
         try{ text = comp.getComputerName()+"\t"+convertDate(comp.getIntroduced())+"\t"+convertDate(comp.getDiscontinued())+"\t"+convertNull(comp.getCompany());}
-        catch (Throwable t){}
+        catch (Throwable t){return false;}
 
-        clickHrefByInnerText(computerTableLocator, text);
+        return clickHrefByInnerText(computerTableLocator, text);
     }
 
     private String convertNull(String value)
@@ -117,7 +117,7 @@ public class HomePage extends BasePage {
         //SimpleDateFormat sdf = new SimpleDateFormat("d MMM yyyy",Locale.ENGLISH);
         Date date = sdf.parse(entry);
         //sdf.applyPattern( "yyyy-MM-dd" );
-        sdf.applyPattern("d MMM yyyy");
+        sdf.applyPattern("dd MMM yyyy");
         return sdf.format(date);
     }
 

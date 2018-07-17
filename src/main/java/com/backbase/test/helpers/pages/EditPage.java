@@ -30,8 +30,9 @@ public class EditPage extends BasePage {
     }
 
     public void chooseCompany(String companyName) {
-
-        selectValue(computerCompanyLocator, companyName);
+        String value = companyName;
+        if (companyName == null) value = "-- Choose a company --";
+        selectValue(computerCompanyLocator, value);
     }
 
     public void submit() {

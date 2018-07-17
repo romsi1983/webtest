@@ -12,17 +12,23 @@ public class TestBase {
     public TestData td;
 
 
-    @BeforeTest
+    @BeforeTest(alwaysRun = true)
     public void start() {
-        //System.out.println("Before Test");
-        if (tlBase.get() != null) { base = tlBase.get(); }
+        System.out.println("Before Test");
+        if (tlBase.get() != null)
+        {
+            base = tlBase.get();
+        }
         else
         {
             base = new Base();
             tlBase.set(base);
         }
 
-        if (tlTd.get() != null) {td = tlTd.get();}
+        if (tlTd.get() != null)
+        {
+            td = tlTd.get();
+        }
         else
         {
             td = new TestData();
@@ -32,17 +38,20 @@ public class TestBase {
                     System.out.println("Running Shutdown Hook");
                     //td.quit();
                     td = null;
+                    tlTd.remove();
                 }
             });
         }
     }
-    @AfterTest
+    @AfterTest()
     public void stop() {
+        System.out.println("After Test");
         if (tlBase.get() != null)
         {
             base = tlBase.get();
             base.quit();
             base = null;
+            tlBase.remove();
         }
     }
 

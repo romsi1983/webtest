@@ -2,23 +2,24 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite" parallel="none">
 
-	<test name="AddComputer">
-		<parameter name="company" value="RCA" />
-		<classes>
-			<class name="com.backbase.test.tests.CreateNewComp" />
-		</classes>
-	</test> <!-- Search -->
+	<!--<test name="AddComputer">-->
+		<!--<parameter name="company" value="RCA" />-->
+		<!--<classes>-->
+			<!--<class name="com.backbase.test.tests.CreateNewComp" />-->
+		<!--</classes>-->
+	<!--</test> &lt;!&ndash; Search &ndash;&gt;-->
 
-	<test name="AddOneMoreComputer">
-		<parameter name="company" value="RCA" />
-		<classes>
-			<class name="com.backbase.test.tests.CreateSameComputer" />
-		</classes>
-	</test> <!-- Search -->
+	<!--<test name="AddOneMoreComputer">-->
+		<!--<parameter name="company" value="RCA" />-->
+		<!--<classes>-->
+			<!--<class name="com.backbase.test.tests.CreateSameComputer" />-->
+		<!--</classes>-->
+	<!--</test> &lt;!&ndash; Search &ndash;&gt;-->
 
 	<test name="Search">
 		<parameter name="expectedSearchResult" value="1" />
 		<classes>
+			<class name="com.backbase.test.tests.CreateNewComp" />
 			<class name="com.backbase.test.tests.Search" />
 		</classes>
 	</test> <!-- Search -->

@@ -61,11 +61,11 @@ public class Base {
         return search;
     }
 
-    public void selectComputer(Computer computer)  { homePage.selectComputer(computer); }
+    public boolean selectComputer(Computer computer)  { return homePage.selectComputer(computer); }
 
     public boolean deleteComputer(Computer computer)
     {
-        homePage.selectComputer(computer);
+        if (!(homePage.selectComputer(computer))) return false;
         editPage.delete();
         String alert = homePage.getAlertMessage();
         return (alert.contentEquals("Done! Computer has been deleted"));

@@ -15,4 +15,16 @@ public class DataProviders {
         };
     }
 
+    @DataProvider(name = "editComputer")
+    public static Object[][] getEditComputer() {
+        return new Object[][]{
+                {Computer.newEntity()
+                        .withCompany("Sony")
+                        .withComputerName("EditComputer" + System.currentTimeMillis())
+                        .withIntroduced("2017-12-12")
+                        .withDiscontinued("2018-12-12")
+                        .build()},
+        };
+    }
+
 }
