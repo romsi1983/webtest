@@ -11,14 +11,15 @@ public class EditComputer extends TestBase {
         //Create new computer
         td.saveOrigComputer(computer);
         List<String> errors = base.createNewComp(computer);
-        //Check if there were errors on creation
+        //Check for errors
         if (errors.size()>0) Assert.fail("errors on creating Computer");
         //Find Created Computer
         Assert.assertTrue(base.searchExactComputer(computer,1));
-        //Computer editComp = new Computer();
+        //Create new comp for edit
         Computer editComp = td.newEditComputer();
         //Select found Computer
         Assert.assertTrue(base.selectComputer(computer));
+        //Check for errors
         errors = base.editComp(editComp);
         if (errors.size()!=0) Assert.fail("Edit Computer Failed");
         Assert.assertTrue(base.searchExactComputer(editComp,1));
