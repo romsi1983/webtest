@@ -11,15 +11,12 @@ public class Computer {
     public String getComputerName() {
         return computerName;
     }
-
     public String getIntroduced() {
         return introduced;
     }
-
     public String getDiscontinued() {
         return discontinued;
     }
-
     public String getCompany() {
         return company;
     }
@@ -30,8 +27,12 @@ public class Computer {
         public Builder withIntroduced(String introduced) { Computer.this.introduced = introduced; return this; }
         public Builder withDiscontinued(String discontinued) { Computer.this.discontinued = discontinued; return this; }
         public Builder withCompany(String company) { Computer.this.company = company; return this; }
-
         public Computer build() {return Computer.this; }
     }
+
+    public void setComputerName (String newComputerName) {computerName = newComputerName;}
+    public void setIntroduced (String newIntroduced) {introduced = newIntroduced;}
+    public void setDiscontinued (String newDiscontinued) {discontinued = newDiscontinued;}
+    public void setCompany (String newCompany) {company = newCompany;}
 
 }

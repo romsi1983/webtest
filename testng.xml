@@ -16,11 +16,9 @@
 		<!--</classes>-->
 	<!--</test> &lt;!&ndash; Search &ndash;&gt;-->
 
-	<test name="Search">
-		<parameter name="expectedSearchResult" value="1" />
+	<test name="Edit Computer">
 		<classes>
-			<class name="com.backbase.test.tests.CreateNewComp" />
-			<class name="com.backbase.test.tests.Search" />
+			<class name="com.backbase.test.tests.EditComputer" />
 		</classes>
 	</test> <!-- Search -->
 

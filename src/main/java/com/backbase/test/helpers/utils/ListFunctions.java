@@ -8,6 +8,7 @@ public class ListFunctions {
     public int findCompsInList(List<Computer> compList, Computer comp)
     {
         int found = 0;
+        if (compList.size()==0) return found;
         for (Computer temp : compList) {
             if (!(compareValues(temp.getComputerName(),comp.getComputerName()))) break;
             if (!(compareValues(temp.getCompany(),comp.getCompany()))) break;
