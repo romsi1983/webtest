@@ -12,6 +12,7 @@ public class EditPage extends BasePage {
     private String computerDeleteLocator = "//form/input[@type='submit']";
     private String errorLocator = "//div[@class='clearfix error']";
     private String errorColour = "rgb(200, 120, 114)";
+    private String statusLocator = "//section/h1";
 
     public EditPage(WebDriver driver) {
         super (driver);
@@ -61,8 +62,18 @@ public class EditPage extends BasePage {
     }
 
     public boolean isNew() {
-        return getURL().endsWith("new");
-    }
+        String status = getValue(statusLocator);
+        if (status.contentEquals("Add a computer")) return true;
+        return false;}
+
+    public boolean isEdit() {
+        String status = getValue(statusLocator);
+        if (status.contentEquals("Edit computer")) return true;
+        return false;}
+
+    public boolean isEditPage(){
+        if (isNew()||isEdit()) return true;
+        return false; }
 
 
 }

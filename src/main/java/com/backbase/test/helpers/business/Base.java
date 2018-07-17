@@ -81,7 +81,7 @@ public class Base {
         editPage.enterIntroducedDate(computer.getIntroduced());
         editPage.enterDiscontinuedDate(computer.getDiscontinued());
         editPage.submit();
-        if (homePage.isHomePage()) return errors;
+        if (!(editPage.isEditPage())) return errors;
         if (editPage.isNameWithError()) errors.add("computerName");
         if (editPage.isDiscontinedDateWithError()) errors.add("Discontinued");
         if (editPage.isIntroducedDateWithError()) errors.add("Introduced");
