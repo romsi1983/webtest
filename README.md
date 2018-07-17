@@ -11,7 +11,7 @@ ToDo:
     (Was tested with 
         <script> function myFunc(){alert("alert");}</script> 
         - passed) 
- - Create computer with special symbols (~!@#$%^&*()_+). 
+ - Create computer with special symbols (like: ~!@#$%^&*()_+). 
     Acceptance criteria: document would be created and found.
     (Actual result: failed. Document was not found)
 - Create/Edit computer where introduced date is less then discontinued date. 
